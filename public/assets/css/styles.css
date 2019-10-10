@@ -92,11 +92,14 @@ section {
     box-sizing: flex;
     margin-bottom: 50px;
     border: 1px ridge rgb(182, 174, 174);
-    height: 650px;
+    height: 680px;
     border-radius: 10px;
     opacity: 0.9;
    
 
+}
+#center-bm {
+    text-align: center;
 }
 
 footer {
@@ -118,10 +121,11 @@ footer {
 
 }
 
-#images {
+.images {
    
     text-align: center;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 
@@ -138,8 +142,10 @@ footer {
     text-align: center;
 }
 #submit {
-    background-color: rgb(33, 160, 132);
-    color: white;
+    padding: 15px;
+    background-color:  rgb(229, 231, 79);
+    border-radius: 3px;
+    color: black;
 }
 #contact-name {
     width: 100%;
@@ -172,10 +178,7 @@ h3 {
 p {
    font-size: 20px;
 }
-#submit {
-    height: 35px;
-    width: 80px;
-}
+
 .train {
     margin-right: 50px;
     margin-left: 230px;
@@ -187,9 +190,7 @@ p {
     border-radius: 3px;
    
 }
-#submit {
-    background-color:  rgb(229, 231, 79);
-    border-radius: 3px;
-    color: black;
 
+input {
+    padding: 10px;
 }
