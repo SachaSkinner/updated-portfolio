@@ -7,12 +7,13 @@
     <title>AS contact</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre&display=swap" rel="stylesheet">
-  
+
     <link href="https://fonts.googleapis.com/css?family=Monoton&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/styles.css" />
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
         crossorigin="anonymous"></script>
-       
+    <script src="https://code.jquery.com/jquery.js"></script>
+
 </head>
 
 <body>
@@ -21,18 +22,18 @@
             <div id="name"> Alexandra &#9829;
                 Skinner </div>
             <div id="nav-right">
-            <div id="nav-right">
-                <a href="/">
-                    <h5 class="pages">About</h5>
-                </a>
-                <a href="/portfolio">
-                    <h5 class="pages">Portfolio</h5>
-                </a>
-                <a href="/contact">
+                <div id="nav-right">
+                    <a href="/">
+                        <h5 class="pages">About</h5>
+                    </a>
+                    <a href="/portfolio">
+                        <h5 class="pages">Portfolio</h5>
+                    </a>
+                    <a href="/contact">
 
-                    <h5 class="pages"> Contact</h5>
-                </a>
-            </div>
+                        <h5 class="pages"> Contact</h5>
+                    </a>
+                </div>
         </header>
     </div>
     <section class="main">
@@ -42,11 +43,11 @@
             Name:<br>
             <input id="contact-name" class="round" type="text" name="name"><br><br>
             E-mail:<br>
-            <input id="contact-mail" class="round" type="text" name="mail" ><br><br>
+            <input id="contact-mail" class="round" type="text" name="mail"><br><br>
             Message:<br>
             <input id="contact-message" class="round" type="text" name="comment" size="50"><br><br>
             <button class="yellow" id="submit" type="submit" value="Submit">Submit</button>
-            
+
 
         </form>
     </section>
@@ -61,60 +62,26 @@
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
 
     <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyBlfmgF0J1FuU3r3PLBbzxYsQwymNCQofw",
-            authDomain: "myportfolio-99c51.firebaseapp.com",
-            databaseURL: "https://myportfolio-99c51.firebaseio.com",
-            projectId: "myportfolio-99c51",
-            storageBucket: "",
-            messagingSenderId: "952832254440",
-            appId: "1:952832254440:web:bba749321dd67108"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-
-        const auth = firebase.auth();
-        const db = firebase.database();
-        const fs = firebase.firestore();
-
-        const settings = {/* your settings... */ timestampsInSnapshots: true };
-        fs.settings(settings);
-
-
- $("#submit").on("click", function (event) {
+        $("#submit").on("click", function (event) {
             event.preventDefault();
+            var userFeedback = {
+                name: $("#contact-name").val().trim().charAt(0).toUpperCase() + $("#contact-name").val().trim().slice(1),
+                email: $("#contact-mail").val().trim(),
+                message: $("#contact-message").val().trim()
+            }
+            console.log(userFeedback.name, userFeedback.email, userFeedback.message)
+            // function sendEmail(userFeedback) {
+            
 
-
-
-            // Grabs user input
-            var uName = $("#contact-name").val().trim();
-
-            var uMail = $("#contact-mail").val().trim();
-            var uMessage = $("#contact-message").val().trim();
-            console.log( uName, uMail, uMessage);
-
-
-            // create a local object
-            var uForm = {
-                uName: uName,
-                uMail: uMail,
-                uMessage: uMessage,
-
-            };
-
-
-            // Uploads train data to the database
-            db.ref().push(uForm);
-            console.log(uForm);
-            // Clears all of the text-boxes
-            $("#contact-name").val("");
-            $("#contact-mail").val("");
-            $("#contact-message").val("");
-
-
-
-
+                $.post("/sendEmail", {
+                    type: "POST",
+                    data: {
+                        name: userFeedback.name,
+                        email: userFeedback.email,
+                        message: userFeedback.message
+                    }
+                });
+            // }
         });
 
     </script>
