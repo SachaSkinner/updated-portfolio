@@ -69,6 +69,7 @@
     <script>
         $("#submit").on("click", function (event) {
             event.preventDefault();
+            alert("Thank you for your feedback!")
             var userFeedback = {
                 name: $("#contact-name").val().trim().charAt(0).toUpperCase() + $("#contact-name").val().trim().slice(1),
                 email: $("#contact-mail").val().trim(),
