@@ -168,12 +168,13 @@ a {
 .left {
     float: left;
 }
-h3 {
+/* h3 {
     clear: both;
-}
+} */
 #picture {
     margin-right: 20px;
     margin-bottom: 20px;
+    margin-top: 30px;
 }
 p {
    font-size: 20px;
