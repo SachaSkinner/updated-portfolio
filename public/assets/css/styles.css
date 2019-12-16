@@ -156,10 +156,11 @@ footer {
 #contact-mail {
     width: 80%;
     padding: 10px;
+    
    
 }
 #contact-message {
-    width: 100%;
+    width: 60%;
     height: 150px;
   
 }
@@ -173,9 +174,7 @@ a {
 .left {
     float: left;
 }
-/* h3 {
-    clear: both;
-} */
+
 #picture {
     margin-right: 20px;
     margin-bottom: 20px;
@@ -199,9 +198,13 @@ p {
 
 .dis-in {
     display: inline-block;
+    
 }
 #wrapper-name-mail {
-    margin-left: auto;
-    margin-right: auto;
+    
     text-align: center;
+}
+#message-wrapper {
+    text-align: center;
+    
 }
