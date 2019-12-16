@@ -148,15 +148,20 @@ footer {
     color: black;
 }
 #contact-name {
-    width: 100%;
+    width: 80%;
+    padding: 10px;
+   
 
 }
 #contact-mail {
-    width: 100%;
+    width: 80%;
+    padding: 10px;
+   
 }
 #contact-message {
     width: 100%;
     height: 150px;
+  
 }
 p, h2, h5 {
     font-family: 'Frank Ruhl Libre', serif;
@@ -192,6 +197,11 @@ p {
    
 }
 
-input {
-    padding: 10px;
+.dis-in {
+    display: inline-block;
+}
+#wrapper-name-mail {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
