@@ -40,7 +40,7 @@
         <h1>Contact</h1><br>
         <hr>
 
-        <form>
+        <form id="submit-form">
             <h3>Name:</h3><br>
             <input id="contact-name" class="round" type="text" name="name"><br><br>
             <h3>E-mail:</h3><br>
@@ -48,8 +48,8 @@
             <h3>Message:</h3><br>
             <input id="contact-message" class="round" type="text" name="comment" size="50"><br><br>
             <div id="center-bm">
-            <button class="yellow" id="submit" type="submit" value="Submit">Submit</button>
-        </div>
+                <button class="yellow" id="submit" type="submit" value="Submit">Submit</button>
+            </div>
             <br>
             <br>
 
@@ -69,7 +69,21 @@
     <script>
         $("#submit").on("click", function (event) {
             event.preventDefault();
-            alert("Thank you for your feedback!")
+            alert("Thank you for your feedback!");
+            // reset a form at once(jQuery)
+            $('#submit-form').each(function () {
+                this.reset();
+            });
+            // reset a form with jQuery one by one
+
+            // $("#contact-name").val('');
+            // $("#contact-mail").val('');
+            // $("#contact-message").val('');
+
+            // reset a form with vanilla Js
+            
+            // document.getElementById('contact-name').value = ''
+
             var userFeedback = {
                 name: $("#contact-name").val().trim().charAt(0).toUpperCase() + $("#contact-name").val().trim().slice(1),
                 email: $("#contact-mail").val().trim(),
@@ -77,16 +91,16 @@
             }
             console.log(userFeedback.name, userFeedback.email, userFeedback.message)
             // function sendEmail(userFeedback) {
-            
 
-                $.post("/sendEmail", {
-                    type: "POST",
-                    data: {
-                        name: userFeedback.name,
-                        email: userFeedback.email,
-                        message: userFeedback.message
-                    }
-                });
+
+            $.post("/sendEmail", {
+                type: "POST",
+                data: {
+                    name: userFeedback.name,
+                    email: userFeedback.email,
+                    message: userFeedback.message
+                }
+            });
             // }
         });
 
